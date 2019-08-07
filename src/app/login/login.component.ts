@@ -13,12 +13,21 @@ export class LoginModel {
   styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
+  public username: string;
+  public password: string;
+  public showLoader: boolean = false;
   constructor(private sharedService: SharedService, private router: Router) {}
 
   ngOnInit() {}
 
   login() {
-    this.sharedService.httpPost("auth").subscribe(res => {
+    let params = {
+      username: this.username,
+      password: this.password
+    };
+    this.showLoader= true;
+    this.sharedService.httpPost("auth", params).subscribe(res => {
+      this.showLoader = false;
       if (res.content) {
         window.localStorage.setItem("access_token", res.content.user.token);
         window.localStorage.setItem("user", JSON.stringify(res.content.user));

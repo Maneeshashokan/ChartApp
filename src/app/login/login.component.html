@@ -2,13 +2,17 @@
   <div class="col-md-12 col-sm-12 full-height login-form-center">
     <div class="login-form-wrap">
       <div class="login-form">
-        <div class="logo-wraper">
-        </div>
+        <div class="logo-wraper"></div>
         <form (ngSubmit)="login()" #loginForm="ngForm" autocomplete="off">
           <label>Username</label>
           <input type="text" name="username" required [(ngModel)]="username" />
           <label>Password</label>
-          <input type="Password" name="password" required [(ngModel)]="password" />
+          <input
+            type="Password"
+            name="password"
+            required
+            [(ngModel)]="password"
+          />
 
           <div class="row">
             <div class="col-md-12 mTop15">
@@ -17,7 +21,19 @@
           </div>
         </form>
       </div>
-
     </div>
+  </div>
+</div>
+
+<div class="loader-container" [hidden]="!showLoader">
+  <div class="lds-roller">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
 </div>

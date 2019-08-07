@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
   @ViewChild("doughnutChart", { static: false }) doughnutChart: UIChart;
   public user;
   public showChart: boolean = false;
+  public showLoader: boolean = false
   data: any = {
     lineChart: {},
     pieChart: {},
@@ -36,7 +37,9 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.user = JSON.parse(window.localStorage.getItem("user"));
+    this.showLoader = true;
     this.sharedService.httpGet("getCharts").subscribe(res => {
+      this.showLoader = false;
       if (res.content) {
         this.data = {
           barChart: res.content.barChart,
