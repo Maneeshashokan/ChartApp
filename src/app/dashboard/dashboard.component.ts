@@ -40,19 +40,19 @@ export class DashboardComponent implements OnInit {
       if (res.content) {
         this.data = {
           barChart: res.content.barChart,
-          pieChart: res.content.barChart,
+          pieChart: res.content.pieChart,
           lineChart: res.content.lineChart,
           doughnutChart: res.content.doughnutChart
         };
         this.showChart = true;
-
-        setTimeout(()=>{
+        setTimeout(() => {
           this.barChart.reinit();
           this.pieChart.reinit();
           this.lineChart.reinit();
           this.doughnutChart.reinit();
-        })
+        });
       }
     });
   }
 }
+
